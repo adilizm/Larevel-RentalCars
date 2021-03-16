@@ -11,3 +11,5 @@ Homestead.jsongit
 Homestead.yaml
 npm-debug.log
 yarn-error.loggit
+/public/images/*
+/public/sliders/*
