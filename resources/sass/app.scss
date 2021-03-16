@@ -1,0 +1,28 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.z100{
+    z-index: 100;
+}
+.w100{
+    width: 100%;
+} 
+.carter{
+    font-family: Carter;
+}
+.sticky {
+    position: fixed;
+    top: 100px;
+    width: 100%;
+    z-index: 100;
+    background-color: chartreuse;
+  }
+  .makeBlur{
+      filter: blur(5px);
+  }
