@@ -16,14 +16,32 @@ class PublicController extends Controller
      */
     public function index($carid = NULL)
     {
+
         if (isset($carid)) {
-            $car=Car::where('id','=',$carid)->with('Images','Brand')->get();
-         
-            return view('public_view.Car_Select',['yy'=>$car]);
+
+            $car = Car::where('id', '=', $carid)->with('Images', 'Brand')->get();
+            if (isset($car[0])) {
+                $orders_JSON = json_decode($car[0]->orders_as_json);
+                $orders = [];
+                $i = -1;
+                if (!$orders_JSON == null) {
+                    foreach ($orders_JSON as $order) {
+                        $i++;
+                        $orders[$i] = ((array)$order)['from'];
+                        $i++;
+                        $orders[$i] = ((array)$order)['to'];
+                    }
+                }
+                return view('public_view.Car_Select', ['car' => $car, 'orders' => $orders]);
+            } else {
+
+                $sliders = Sliders::all();
+                $cars = Car::with('Images', 'Brand')->get();
+                return view('public_view.index', ['cars' => $cars, 'sliders' => $sliders]);
+            }
         } else {
             $sliders = Sliders::all();
             $cars = Car::with('Images', 'Brand')->get();
-           
             return view('public_view.index', ['cars' => $cars, 'sliders' => $sliders]);
         }
     }

@@ -65,6 +65,8 @@ class Car_controller extends Controller
             'hors_power'        => $request->hors_power,
             'car_description'   => $request->car_description,
             'Distance_fee'      => $request->Distance_fee,
+            'Current_Order'     => 0,
+            
         ]);
 
         $car_id = DB::table('cars')->max('id');

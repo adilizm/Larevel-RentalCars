@@ -1,7 +1,13 @@
 @extends('layouts.public_layouts.public_master')
 
 @section('content')
+@if (session()->has('Make_Order'))
+    
+<div class="alert alert-success" role="alert">
+    Your Order is Accepted - we will call you stay in touch 
+  </div>
 
+@endif
     <div class="position-relative">
         @extends('layouts.public_layouts.public_navBar')
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -49,7 +55,7 @@
 
 
                         </ol>
-                        <div class="carousel-inner">
+                        <div class="carousel-inner" style="border-radius:20px">
                             <a href="{{route('carselected',$car->id)}}">
                             @foreach ($car->Images as $image)
                                 <div class="carousel-item @if ($loop->first) active @endif ">

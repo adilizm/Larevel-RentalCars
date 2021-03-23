@@ -26,3 +26,23 @@
   .makeBlur{
       filter: blur(5px);
   }
+  .fit-avali{
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
+      
+  }
+  .w-90{
+      width: 90%;
+  }
+  @media (min-width: 768px) {
+  .date{
+    bottom: -35;
+  }
+}
+@media (min-width: 768px) {
+    .date{
+      bottom: 35px;
+    }
+  }

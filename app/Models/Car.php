@@ -28,7 +28,8 @@ class Car extends Model
         'car_price',
         'hors_power',
         'car_description',
-        'Distance_fee'
+        'Distance_fee',
+        'Current_Order',
     ];
     public function Brand()
     {

@@ -7,7 +7,7 @@
                 <div class="card mb-4 mt-3">
                     <div class="card-header">
                         <i class="fas fa-table mr-1"></i>
-                        Cars list
+                        Orders Queue
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -15,35 +15,26 @@
                                 <thead id="hee">
                                     <tr id="nnnn">
                                         <th>Tools</th>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Email </th>
+                                        <th>Country </th>
                                         <th>Car Model</th>
-                                        <th>Car brand</th>
-                                        <th>car_description </th>
-                                        <th>Price_one_day </th>
-                                        <th>car_price </th>
-                                        <th>type_fule </th>
-                                        <th>type_car </th>
-                                        <th>plaka </th>
-                                        <th>speedTo100km </th>
-                                        <th>Number_perso </th>
-                                        <th>Number_balisat </th>
-                                        <th>Door_number </th>
-                                        <th>Seat_number </th>
-                                        <th>gear_type </th>
-                                        <th>motor_model </th>
-                                        <th>hors_power </th>
-                                        <th>Distance_fee </th>
-                                        <th>Images</th>
+                                        <th>Number days</th>
+                                        <th>Price</th>
+                                        <th>Start Rent</th>
+                                        <th>End's Rent</th>
+                                        <th>Note</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($cars as $car)
+                                    @foreach ($orders as $order)
                                         <tr>
-
                                             <td>
-                                                <div class="d-flex flex-column">
-                                                    <form action="{{ route('car.destroy', $car->id) }}" method="POST">
+                                                <div class="d-flex ">
+                                                    <form action="" method="POST">
                                                         @csrf
-                                                        @method('DELETE')
+                                                       
                                                         <button type="submit" class="btn btn-danger btn-sm mr-1 "><svg
                                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -54,14 +45,14 @@
                                                         </svg></button>
                                                     </form>
 
-                                                    <a href="#" class="btn btn-info btn-sm "><svg
+                                                    <a href="#" class="btn btn-info btn-sm mr-1"><svg
                                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
                                                             <path
                                                                 d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                                         </svg></a>
-                                                    <a href="{{ route('car.edit', $car->id) }}"
+                                                    <a href="{{route('Order.edit',$order->id)}}"
                                                         class="btn btn-success btn-sm "><svg
                                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-arrow-counterclockwise"
@@ -73,36 +64,16 @@
                                                         </svg></a>
                                                 </div>
                                             </td>
-                                            <td>{{ $car->model }}</td>
-                                            <td>{{ $car->brand->brand_name }}</td>
-                                            <td style="white-space: pre; max-width: 150px;overflow: auto;" >{{ $car->car_description }}</td>
-                                            <td>{{ $car->Price_one_day }}</td>
-                                            <td>{{ $car->car_price }}</td>
-                                            <td>{{ $car->type_fule }}</td>
-                                            <td>{{ $car->type_car }}</td>
-                                            <td>{{ $car->plaka }}</td>
-                                            <td>{{ $car->speedTo100km }}</td>
-                                            <td>{{ $car->Number_perso }}</td>
-                                            <td>{{ $car->Number_balisat }}</td>
-                                            <td>{{ $car->Door_number }}</td>
-                                            <td>{{ $car->Seat_number }}</td>
-                                            <td>{{ $car->gear_type }}</td>
-                                            <td>{{ $car->motor_model }}</td>
-                                            <td>{{ $car->hors_power }}</td>
-                                            <td>{{ $car->Distance_fee }}</td>
-                                            <td>
-                                                <table>
-                                                    <tr>
-                                                        <td>
-                                                            @foreach ($car->Images as $image)
-                                                                <img src="{{ '/images/' . $image->image_link }}" alt=""
-                                                                    height="25px">
-                                                            @endforeach
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
+                                            <td>{{ $order->Costumer_First_name .' '.$order->Costumer_Last_name }}</td>
+                                            <td>{{ $order->Phone_number}}</td>
+                                            <td>{{ $order->Costumer_email }}</td>
+                                            <td>{{ $order->client_Country }}</td>
+                                            <td>{{ $order->Car->model }}</td>
+                                            <td>{{ $Number_days[$loop->index] }}</td>
+                                            <td>{{ $Price[$loop->index] }}</td>
+                                            <td>{{ $order->Start_renting .' at '. $order->start_hour }}</td>
+                                            <td>{{ $order->End_renting .' at '. $order->Finish_hour }}</td>
+                                            <td>{{ $order->Note }}</td>
                                     @endforeach
                                 </tbody>
                             </table>

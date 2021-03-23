@@ -1,12 +1,12 @@
 <div class="w100" style="position: absolute;">
     <nav class="navbar navbar-expand-lg bg-transparent  z100 w100">
-        <a class="navbar-brand d-flex" style="margin-left: 10%;" href="#">
+        <a class="navbar-brand d-flex ml-lg-5 ml-md-5 ml-sm-3 ml-xl-5 ml-0"  href="#">
             <img src="/images/Logo-lambo.png" alt="" width="40" height="48">
             <H1 style="font-family: Dancing Script; color: burlywood;" class="Logo-text">Rental Cars</H1>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span><img src="images/icones/list.svg" alt="list" width="35"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="justify-content: flex-end;">
             <div class="navbar-nav">
