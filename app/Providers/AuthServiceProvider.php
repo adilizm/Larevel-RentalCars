@@ -26,14 +26,20 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         
-       Gate::define('See_Admins', function (User $user) {
-            return $user->Fonction === 'admin';
+       Gate::define('is_owner', function (User $user) {
+            return $user->Fonction === 'owner';
         });
 
-        Gate::define('is_Fonctioned', function (User $user) {
-            return $user->Fonction == null;
+        Gate::define('is_admin', function (User $user) {
+            return in_array( $user->Fonction ,['owner','admin'] );
         });
 
+        Gate::define('is_manager', function (User $user) {
+            return  $user->Fonction ==='manager';
+        });
 
+        Gate::define('is_worker', function (User $user) {
+            return $user->Fonction === 'delivery_man';
+        });
     }
 }

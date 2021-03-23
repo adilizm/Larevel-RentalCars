@@ -12,8 +12,8 @@
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link href="/css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/app.css">
-   
-    
+
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -68,7 +68,7 @@
                         <div class="sb-sidenav-menu-heading">Interface</div>
 
 
-                        @can('See_Admins', User::class)
+                        @can('is_owner', User::class)
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
                                 aria-expanded="false" aria-controls="collapseLayouts">
@@ -80,127 +80,72 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                                 data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Admins list</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">New Admin</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">New Employ</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                    <a class="nav-link" href="{{route('employer.index')}}">Employers list</a>
+                                    <a class="nav-link" href="{{route('employer.create')}}">New Admin</a>
                                 </nav>
                             </div>
                         @endcan
 
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
-                        aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Orders
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseOrders" aria-labelledby="headingOne"
-                        data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('Order.index') }}">Orders in Queue</a>
-                            <a class="nav-link" href="{{route('confirmedorders')}}">Confirmed Orders</a>
-                            <a class="nav-link" href="{{route('RunningOrders')}}">Running Orders</a>
-                        </nav>
-                    </div>
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCar"
                             aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Cars
+                            Orders
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseCar" aria-labelledby="headingOne"
+                        <div class="collapse" id="collapseOrders" aria-labelledby="headingOne"
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{ route('car.index') }}">Cars list</a>
-                                <a class="nav-link" href="{{ route('car.create') }}">new car</a>
+                                <a class="nav-link" href="{{ route('Order.index') }}">Orders in Queue</a>
+                                <a class="nav-link" href="{{ route('confirmedorders') }}">Confirmed Orders</a>
+                                <a class="nav-link" href="{{ route('RunningOrders') }}">Running Orders</a>
                             </nav>
                         </div>
+                        
+                        @can('is_admin', User::class)
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCar"
+                                aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Cars
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseCar" aria-labelledby="headingOne"
+                                data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('car.index') }}">Cars list</a>
+                                    <a class="nav-link" href="{{ route('car.create') }}">new car</a>
+                                </nav>
+                            </div>
+                    
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBrand"
+                                aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                brands
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseBrand" aria-labelledby="headingOne"
+                                data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('brand.index') }}">brands list</a>
+                                    <a class="nav-link" href="{{ route('brand.create') }}">new brand</a>
+                                </nav>
+                            </div>
 
 
 
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBrand"
-                            aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            brands
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseBrand" aria-labelledby="headingOne"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{ route('brand.index') }}">brands list</a>
-                                <a class="nav-link" href="{{ route('brand.create') }}">new brand</a>
-                            </nav>
-                        </div>
-
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSliders"
-                            aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Sliders
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseSliders" aria-labelledby="headingOne"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{ route('slider.index') }}">Sliders list</a>
-                                <a class="nav-link" href="{{ route('slider.create') }}">new slider</a>
-                            </nav>
-                        </div>
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                            aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Other Members
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                    data-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Authentication
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
-                                    data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                    data-target="#pagesCollapseError" aria-expanded="false"
-                                    aria-controls="pagesCollapseError">
-                                    Error
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
-                                    data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">401 Page</a>
-                                        <a class="nav-link" href="404.html">404 Page</a>
-                                        <a class="nav-link" href="500.html">500 Page</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSliders"
+                                aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Sliders
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseSliders" aria-labelledby="headingOne"
+                                data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('slider.index') }}">Sliders list</a>
+                                    <a class="nav-link" href="{{ route('slider.create') }}">new slider</a>
+                                </nav>
+                            </div>
+                        @endcan 
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -209,20 +154,17 @@
                 </div>
             </nav>
         </div>
-       
         @yield('content')
     </div>
-  
+    <!-- script src="/js/app.js"></script -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
-   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
     </script>
-    
-    <script src="/js/app.js"></script>
-   
+
+
 
 </body>
 

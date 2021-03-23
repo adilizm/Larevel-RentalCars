@@ -21,7 +21,7 @@
 
     @if (Auth::check())
         <div class="d-block bg-info  position-fixed my-1 " style="z-index: 1001;">
-            <a class="btn btn-primary text-dark btn-sm p-1 " href="{{ route('employer.index') }}">Dashboard</a>
+            <a class="btn btn-primary text-dark btn-sm p-1 " href="{{ route('Order.index') }}">Dashboard</a>
         </div>
     @endif
 

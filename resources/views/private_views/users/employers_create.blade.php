@@ -21,14 +21,14 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputName">Name</label>
-                            <input type="text" class="form-control" id="inputName" name="name">
+                            <input type="text" min="3" max="60" class="form-control" id="inputName" name="name">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Fonction</label>
                             <select class="custom-select custom-select-md" name="Fonction">
-                                <option selected >admin</option>
-                                <option>manager</option>
-                                <option>worker</option>
+                                <option class=" text-success strong" selected >worker</option>
+                                <option class=" text-info strong">admin</option>
+                                <option class="text-danger strong">owner</option>
                             </select>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                     <div class="form-row ">
                         <div class="form-group col-md-6">
                             <label for="inputEmail">Email</label>
-                            <input type="text" class="form-control" id="inputEmail" placeholder="Exampel@Company.com" name="email">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Exampel@Company.com" name="email">
                         </div>
                         <div class="form-group  col-md-6 ">
                             <label class="label" for="password">Password</label>
